@@ -1,0 +1,61 @@
+{
+"update_url": "https://clients2.google.com/service/update2/crx",
+
+    "manifest_version":  3,
+    "name":  "ImportKit",
+    "version":  "1.0.4",
+    "description":  "Ferramentas para Goofish/Xianyu e Taobao com botao liga/desliga.",
+    "icons":  {
+                  "16":  "assets/icons/icon16.png",
+                  "32":  "assets/icons/icon32.png",
+                  "48":  "assets/icons/icon48.png",
+                  "128":  "assets/icons/icon128.png"
+              },
+    "action":  {
+                   "default_title":  "ImportKit",
+                   "default_popup":  "src/ui/popup/index.html",
+                   "default_icon":  {
+                                        "16":  "assets/icons/icon16.png",
+                                        "32":  "assets/icons/icon32.png",
+                                        "48":  "assets/icons/icon48.png",
+                                        "128":  "assets/icons/icon128.png"
+                                    }
+               },
+    "permissions":  [
+                        "storage",
+                        "scripting",
+                        "alarms"
+                    ],
+    "host_permissions":  [
+                             "https://*.goofish.com/*",
+                             "https://*.taobao.com/*",
+                             "https://juxjooigqgurprxkcocc.supabase.co/*"
+                         ],
+    "background":  {
+                       "service_worker":  "src/service-worker/service-worker.js"
+                   },
+    "options_page":  "src/ui/options/index.html",
+    "web_accessible_resources":  [
+                                     {
+                                         "resources":  [
+                                                           "assets/images/acbuy.png",
+                                                           "assets/images/cssbuy.png"
+                                                       ],
+                                         "matches":  [
+                                                         "https://*.goofish.com/*",
+                                                         "https://*.taobao.com/*"
+                                                     ]
+                                     },
+                                     {
+                                         "resources":  [
+                                                           "src/ui/auth/callback.html",
+                                                           "src/ui/auth/callback.js",
+                                                           "src/shared/messaging/runtime-messages.js",
+                                                           "src/shared/constants/auth-constants.js"
+                                                       ],
+                                         "matches":  [
+                                                         "https://juxjooigqgurprxkcocc.supabase.co/*"
+                                                     ]
+                                     }
+                                 ]
+}

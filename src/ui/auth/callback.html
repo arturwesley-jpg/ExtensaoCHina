@@ -1,0 +1,106 @@
+<!-- src/ui/auth/callback.html -->
+<!doctype html>
+<html lang="pt-BR" data-theme="white">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login - ImportKit</title>
+  <style>
+    :root {
+      --bg-0: #f7f8fa;
+      --bg-1: #eef1f5;
+      --surface: #ffffff;
+      --stroke: #e5e9f0;
+      --text: #0f172a;
+      --muted: #475569;
+      --ok: #16a34a;
+      --err: #dc2626;
+      --font-sans:
+        "Inter",
+        "SF Pro Text",
+        "SF Pro Display",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+    }
+
+    :root[data-theme="black"] {
+      --bg-0: #08090E;
+      --bg-1: #0e1018;
+      --surface: rgba(255,255,255,0.04);
+      --stroke: rgba(255,255,255,0.08);
+      --text: #F0F0F5;
+      --muted: rgba(255,255,255,0.55);
+      --ok: #34D399;
+      --err: #F87171;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font-sans);
+      color: var(--text);
+      background:
+        radial-gradient(640px 340px at 0% -10%, #ffffff, transparent 70%),
+        radial-gradient(520px 280px at 100% 0%, #e7f6f3, transparent 66%),
+        linear-gradient(165deg, var(--bg-0), var(--bg-1));
+      display: grid;
+      place-items: center;
+      padding: 18px;
+    }
+
+    .card {
+      width: min(620px, 100%);
+      border: 1px solid var(--stroke);
+      border-radius: 16px;
+      background:
+        radial-gradient(170px 100px at 100% 0%, rgba(15, 118, 110, 0.12), transparent 70%),
+        var(--surface);
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+      padding: 20px;
+    }
+
+    .title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.45;
+    }
+
+    .ok {
+      color: var(--ok);
+      font-weight: 700;
+    }
+
+    .err {
+      color: var(--err);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="title">ImportKit</div>
+    <div id="status" class="muted">Processando login...</div>
+    <div id="hint" class="muted" style="margin-top:8px;"></div>
+  </div>
+  <script src="../../shared/messaging/runtime-messages.js"></script>
+  <script src="../../shared/constants/auth-constants.js"></script>
+  <script src="../../shared/constants/keys.js"></script>
+  <script src="callback.js"></script>
+</body>
+</html>

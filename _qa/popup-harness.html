@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="white">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>ImportKit QA Popup Harness</title>
+  <script>
+    // QA harness: mock chrome.* APIs before React bundle runs.
+    // Reads initial state from localStorage.XH_QA_INITIAL (JSON).
+    (function () {
+      const listeners = new Set();
+      const storageMock = {
+        __state: {},
+        get(key) {
+          // MV3 Promise-style get.
+          if (key == null) return Promise.resolve({ ...this.__state });
+          if (typeof key === "string") {
+            return Promise.resolve(key in this.__state ? { [key]: this.__state[key] } : {});
+          }
+          if (Array.isArray(key)) {
+            const out = {};
+            for (const k of key) if (k in this.__state) out[k] = this.__state[k];
+            return Promise.resolve(out);
+          }
+          return Promise.resolve({ ...this.__state });
+        },
+        set(obj) {
+          const changes = {};
+          for (const k of Object.keys(obj)) {
+            changes[k] = { oldValue: this.__state[k], newValue: obj[k] };
+            this.__state[k] = obj[k];
+          }
+          for (const fn of listeners) { try { fn(changes, "sync"); } catch {} }
+          return Promise.resolve();
+        },
+        remove(key) {
+          const keys = Array.isArray(key) ? key : [key];
+          const changes = {};
+          for (const k of keys) {
+            changes[k] = { oldValue: this.__state[k], newValue: undefined };
+            delete this.__state[k];
+          }
+          for (const fn of listeners) { try { fn(changes, "sync"); } catch {} }
+          return Promise.resolve();
+        },
+      };
+
+      // Carrega estado inicial
+      try {
+        const raw = localStorage.getItem("XH_QA_INITIAL");
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (parsed && typeof parsed === "object") {
+            Object.assign(storageMock.__state, parsed);
+          }
+        }
+      } catch {}
+
+      // Mocks globais
+      window.chrome = window.chrome || {};
+      window.chrome.storage = {
+        sync: storageMock,
+        local: storageMock, // compartilha o mesmo backend para simplificar
+        onChanged: {
+          addListener: (fn) => listeners.add(fn),
+          removeListener: (fn) => listeners.delete(fn),
+        },
+      };
+      window.chrome.runtime = window.chrome.runtime || {
+        id: "qa-mock",
+        sendMessage: () => Promise.resolve({ ok: false, error: "qa-mock" }),
+        getURL: (p) => "/" + p,
+        onMessage: { addListener: () => {}, removeListener: () => {} },
+      };
+      window.chrome.alarms = window.chrome.alarms || {
+        create: () => {}, clear: () => Promise.resolve(true), get: () => Promise.resolve(null),
+        onAlarm: { addListener: () => {}, removeListener: () => {} },
+      };
+      window.chrome.tabs = window.chrome.tabs || {
+        query: () => Promise.resolve([]),
+        create: (o) => { window.open(o && o.url || "about:blank", "_blank"); return Promise.resolve({}); },
+      };
+      window.chrome.scripting = window.chrome.scripting || { executeScript: () => Promise.resolve([]) };
+      window.chrome.action = window.chrome.action || { setBadgeText: () => {}, setBadgeBackgroundColor: () => {} };
+
+      // Helper exposto para os testes
+      window.__qa = {
+        setPending(startedAtMs) {
+          return window.chrome.storage.sync.set({
+            xhCheckoutPending: { pending: true, startedAtMs },
+          });
+        },
+        clearPending() {
+          return window.chrome.storage.sync.remove("xhCheckoutPending");
+        },
+        getPending() {
+          return window.chrome.storage.sync.get("xhCheckoutPending");
+        },
+        snapshot() { return { ...storageMock.__state }; },
+      };
+    })();
+  </script>
+  <script type="module" crossorigin src="../src/ui/popup/assets/popup.js"></script>
+  <link rel="modulepreload" crossorigin href="../src/ui/popup/assets/price.js">
+  <link rel="stylesheet" crossorigin href="../src/ui/popup/assets/index.css">
+  <style>
+    html, body { margin: 0; padding: 0; }
+    body { width: 380px; min-height: 500px; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+</html>

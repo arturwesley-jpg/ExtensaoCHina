@@ -1,0 +1,1 @@
+# ExtensaoCHina\n\nExtensao Chrome para integracao de precos, badges e avaliacoes em sites chineses (Goofish, Taobao).\n\n## Funcionalidades\n- Conversao de precos para BRL (AwesomeAPI + OKX fallback)\n- Badges de vendedores\n- Avaliacao de vendedores\n- Aviso de limitacao de login Taobao

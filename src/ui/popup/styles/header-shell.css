@@ -1,0 +1,193 @@
+.app {
+  position: relative;
+  padding: 0;
+}
+
+.appShell {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+}
+
+.appAura {
+  position: absolute;
+  inset: 10px 10px auto;
+  height: 86px;
+  border-radius: calc(var(--radius-xl) + 4px);
+  background: radial-gradient(180px 110px at 100% 0%, rgba(var(--accent-alt-rgb), 0.08), transparent 72%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.top {
+  position: relative;
+  z-index: 1;
+  padding: 14px;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--stroke);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+  animation: enter-up 0.32s cubic-bezier(0.2, 0.9, 0.2, 1);
+  transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.brandRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.logoWrap {
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  overflow: hidden;
+  border: 1px solid var(--stroke);
+  background: var(--surface-soft);
+  box-shadow: var(--shadow-sm);
+  flex: 0 0 auto;
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+}
+
+.brandText {
+  min-width: 0;
+}
+
+.brandTitle {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.brandSub {
+  margin-top: 2px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* ── Unified status bar (v4: single element) ── */
+.statusUnified {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--stroke);
+  background: var(--surface-soft);
+  padding: 0 14px;
+  font-size: 11px;
+  font-family: var(--font-mono);
+}
+
+.statusUnified .suDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.statusUnified .suText {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.statusUnified .suSep {
+  color: var(--stroke-strong);
+  margin: 0 2px;
+  user-select: none;
+}
+
+.statusUnified .suDetail {
+  color: var(--faint);
+  font-weight: 400;
+}
+
+/* Dot colors by state */
+.statusUnified[data-state="active"] .suDot { background: var(--ok); box-shadow: 0 0 0 3px rgba(31, 139, 86, 0.12); }
+.statusUnified[data-state="paused"] .suDot { background: var(--warning); box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.12); }
+.statusUnified[data-state="blocked"] .suDot { background: var(--danger); box-shadow: 0 0 0 3px rgba(191, 51, 72, 0.12); }
+.statusUnified[data-state="no_session"] .suDot { background: #6a7f9d; box-shadow: 0 0 0 3px rgba(106, 127, 157, 0.14); }
+.statusUnified[data-state="offline"] .suDot { background: var(--warning); box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.12); }
+
+.masterToggle {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--stroke-strong);
+  background: var(--surface-subtle);
+  padding: 10px;
+}
+
+.masterCopy {
+  min-width: 0;
+}
+
+.masterTitle {
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.masterSub {
+  margin-top: 2px;
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.content {
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+  z-index: 1;
+}
+
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--stroke);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.icon-btn:hover {
+  border-color: var(--stroke-strong);
+  background: var(--surface-soft);
+}
+
+.icon-btn:focus-visible {
+  box-shadow: 0 0 0 3px var(--accent-soft);
+  outline: none;
+}

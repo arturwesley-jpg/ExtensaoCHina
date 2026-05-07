@@ -1,0 +1,42 @@
+@keyframes shimmer {
+  from { background-position: 0 0; }
+  to { background-position: 220% 0; }
+}
+
+@keyframes enter-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.statusDot {
+  animation: pulse-soft 1.9s ease-in-out infinite;
+}
+
+.app {
+  animation: fade-in-up 0.25s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

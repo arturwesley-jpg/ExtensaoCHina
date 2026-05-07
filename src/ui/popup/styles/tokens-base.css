@@ -1,0 +1,212 @@
+/* ══════════════════════════════════════════════════════════
+   WHITE THEME (padrão — azul/branco)
+   ══════════════════════════════════════════════════════════ */
+:root,
+:root[data-theme="white"] {
+  --popup-width: 380px;
+
+  --bg-0: #f1f6ff;
+  --bg-1: #e5eefc;
+  --surface: #ffffff;
+  --surface-soft: #f5f8ff;
+  --surface-subtle: #edf2ff;
+
+  --stroke: #d8e1f2;
+  --stroke-strong: #bcc9e3;
+
+  --text: #0a1526;
+  --muted: #415673;
+  --faint: #4d6580;
+
+  --accent: #2f68d5;
+  --accent-strong: #214ca2;
+  --accent-soft: #dce8ff;
+  --accent-rgb: 47, 104, 213;
+
+  --accent-alt: #2f68d5;
+  --accent-alt-strong: #214ca2;
+  --accent-alt-soft: #dce8ff;
+  --accent-alt-rgb: 47, 104, 213;
+
+  --focus-border: #3389f0;
+  --focus-ring: rgba(51, 137, 240, 0.16);
+
+  --danger: #cc2d3f;
+  --warning: #bc6f12;
+  --ok: #14844d;
+  --ok-soft: #e8f8ef;
+  --danger-soft: #ffecef;
+  --warning-soft: #fff2e1;
+  --info-soft: #e9f3ff;
+  --info-text: #204a86;
+
+  --gold: #b88b3c;
+  --gold-soft: #fdf5e6;
+  --gold-border: #e8d5aa;
+
+  --cta-grad-1: #2f68d5;
+  --cta-grad-2: #1e4faa;
+  --cta-shadow: rgba(47, 104, 213, 0.25);
+
+  --switch-off: #dbe5f6;
+  --switch-on: #5b9cf5;
+
+  --shadow-card: 0 10px 24px rgba(15, 27, 45, 0.08);
+  --shadow-card-hover: 0 14px 30px rgba(15, 27, 45, 0.12);
+  --shadow-lg: 0 14px 30px rgba(15, 27, 45, 0.12);
+  --shadow-sm: 0 4px 12px rgba(15, 27, 45, 0.06);
+
+  --radius-xl: 18px;
+  --radius-lg: 13px;
+  --radius-md: 11px;
+
+  --font-sans:
+    "Sora",
+    "Plus Jakarta Sans",
+    "Manrope",
+    "Avenir Next",
+    "Segoe UI",
+    "Tahoma",
+    sans-serif;
+  --font-mono: "JetBrains Mono", "Cascadia Mono", "Consolas", monospace;
+
+  --popup-bg: #ffffff;
+  --popup-border: #e0e8f5;
+  --popup-shadow: 0 20px 50px rgba(15, 27, 45, 0.12);
+
+  --badge-grad-1: #2f68d5;
+  --badge-grad-2: #1e4faa;
+
+  --premium-bg: linear-gradient(135deg, #fdf5e6, #fef9f0);
+  --premium-border: #e8d5aa;
+  --premium-color: #8a6b24;
+
+  --thumb-bg: #ffffff;
+  --chev-border: rgba(37, 99, 235, 0.14);
+  --chev-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(241, 245, 249, 0.96) 100%);
+  --chev-arrow: #1e3a8a;
+  --chev-shadow: 0 6px 16px rgba(15, 23, 42, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  --chev-hover-border: rgba(37, 99, 235, 0.3);
+  --chev-hover-bg: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(219, 234, 254, 0.88) 100%);
+  --chev-hover-shadow: 0 8px 18px rgba(37, 99, 235, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.94);
+
+  --agent-row-bg: rgba(255, 255, 255, 0.78);
+  --agent-icon-bg: #ffffff;
+  --agent-icon-border: rgba(8, 22, 43, 0.08);
+
+  --mail-logo-bg: #ffffff;
+  --code-bg: rgba(255, 255, 255, 0.7);
+
+  --theme-dots-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.74));
+  --ghost-small-hover-bg: #ffffff;
+}
+
+/* ══════════════════════════════════════════════════════════
+   BLACK THEME (dark premium)
+   ══════════════════════════════════════════════════════════ */
+:root[data-theme="black"] {
+  --bg-0: #08090E;
+  --bg-1: #0e1018;
+  --surface: rgba(255, 255, 255, 0.04);
+  --surface-soft: rgba(255, 255, 255, 0.025);
+  --surface-subtle: rgba(255, 255, 255, 0.05);
+
+  --stroke: rgba(255, 255, 255, 0.08);
+  --stroke-strong: rgba(255, 255, 255, 0.14);
+
+  --text: #F0F0F5;
+  --muted: rgba(255, 255, 255, 0.55);
+  --faint: rgba(255, 255, 255, 0.30);
+
+  --accent: #5b9cf5;
+  --accent-strong: #3d7ee0;
+  --accent-soft: rgba(91, 156, 245, 0.10);
+  --accent-rgb: 91, 156, 245;
+
+  --accent-alt: #5b9cf5;
+  --accent-alt-strong: #3d7ee0;
+  --accent-alt-soft: rgba(91, 156, 245, 0.10);
+  --accent-alt-rgb: 91, 156, 245;
+
+  --focus-border: #5b9cf5;
+  --focus-ring: rgba(91, 156, 245, 0.20);
+
+  --danger: #F87171;
+  --warning: #FBBF24;
+  --ok: #34D399;
+  --ok-soft: rgba(52, 211, 153, 0.10);
+  --danger-soft: rgba(248, 113, 113, 0.10);
+  --warning-soft: rgba(251, 191, 36, 0.08);
+  --info-soft: rgba(91, 156, 245, 0.08);
+  --info-text: #93b8f7;
+
+  --gold: #F5C542;
+  --gold-soft: rgba(245, 197, 66, 0.08);
+  --gold-border: rgba(245, 197, 66, 0.18);
+
+  --cta-grad-1: #5b9cf5;
+  --cta-grad-2: #3d7ee0;
+  --cta-shadow: rgba(91, 156, 245, 0.25);
+
+  --switch-off: rgba(255, 255, 255, 0.10);
+  --switch-on: #5b9cf5;
+
+  --shadow-card: 0 10px 24px rgba(0, 0, 0, 0.4);
+  --shadow-card-hover: 0 14px 30px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 14px 30px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+  --popup-bg: #0c0d14;
+  --popup-border: rgba(255, 255, 255, 0.06);
+  --popup-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+
+  --badge-grad-1: #5b9cf5;
+  --badge-grad-2: #3d7ee0;
+
+  --premium-bg: linear-gradient(135deg, rgba(245, 197, 66, 0.08), rgba(245, 197, 66, 0.03));
+  --premium-border: rgba(245, 197, 66, 0.18);
+  --premium-color: #F5C542;
+
+  --thumb-bg: #1a1b24;
+  --chev-border: rgba(91, 156, 245, 0.14);
+  --chev-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+  --chev-arrow: #5b9cf5;
+  --chev-shadow: 0 6px 16px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --chev-hover-border: rgba(91, 156, 245, 0.3);
+  --chev-hover-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.05) 100%);
+  --chev-hover-shadow: 0 8px 18px rgba(91, 156, 245, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  --agent-row-bg: rgba(255, 255, 255, 0.04);
+  --agent-icon-bg: rgba(255, 255, 255, 0.06);
+  --agent-icon-border: rgba(255, 255, 255, 0.08);
+
+  --mail-logo-bg: rgba(255, 255, 255, 0.06);
+  --code-bg: rgba(255, 255, 255, 0.06);
+
+  --theme-dots-bg: rgba(255, 255, 255, 0.04);
+  --ghost-small-hover-bg: rgba(255, 255, 255, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: var(--popup-width);
+  min-width: var(--popup-width);
+  max-width: var(--popup-width);
+  color: var(--text);
+  font-family: var(--font-sans);
+  transition: background 0.35s ease, color 0.35s ease;
+}
+
+body {
+  min-height: 100%;
+}
+
+.hidden {
+  display: none !important;
+}

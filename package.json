@@ -2,14 +2,43 @@
   "name": "importkit-chrome-extension",
   "version": "1.0.5",
   "private": true,
-  "description": "ImportKit - Ferramentas para Goofish/Xianyu e Taobao",
+  "description": "Chrome Extension for Goofish/Xianyu and Taobao — currency conversion, seller badges, quality sellers panel",
+  "author": {
+    "name": "arturwesley-jpg",
+    "url": "https://github.com/arturwesley-jpg"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arturwesley-jpg/ExtensaoCHina.git"
+  },
+  "bugs": {
+    "url": "https://github.com/arturwesley-jpg/ExtensaoCHina/issues"
+  },
+  "homepage": "https://github.com/arturwesley-jpg/ExtensaoCHina#readme",
+  "keywords": [
+    "chrome-extension",
+    "goofish",
+    "taobao",
+    "xianyu",
+    "currency-conversion",
+    "import",
+    "shopping"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
-    "lint:security": "eslint src/ --rule '{\"security/detect-object-injection\": \"error\", \"security/detect-non-literal-regexp\": \"error\", \"security/detect-unsafe-regex\": \"error\", \"security/detect-buffer-noassert\": \"error\", \"security/detect-possible-timing-attacks\": \"error\"}'"
+    "lint:security": "eslint src/ --rule '{\"security/detect-object-injection\": \"error\", \"security/detect-non-literal-regexp\": \"error\", \"security/detect-unsafe-regex\": \"error\", \"security/detect-buffer-noassert\": \"error\", \"security/detect-possible-timing-attacks\": \"error\"}'",
+    "test": "jest --passWithNoTests",
+    "test:watch": "jest --watch --passWithNoTests",
+    "test:coverage": "jest --coverage --passWithNoTests"
   },
   "devDependencies": {
     "eslint": "^8.57.1",
-    "eslint-plugin-security": "^2.1.1"
+    "eslint-plugin-security": "^2.1.1",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^30.3.0"
   }
 }

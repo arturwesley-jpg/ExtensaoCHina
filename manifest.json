@@ -3,7 +3,7 @@
 
     "manifest_version":  3,
     "name":  "ImportKit",
-    "version":  "1.0.4",
+    "version":  "1.0.5",
     "description":  "Ferramentas para Goofish/Xianyu e Taobao com botao liga/desliga.",
     "icons":  {
                   "16":  "assets/icons/icon16.png",
@@ -29,12 +29,25 @@
     "host_permissions":  [
                              "https://*.goofish.com/*",
                              "https://*.taobao.com/*",
-                             "https://juxjooigqgurprxkcocc.supabase.co/*"
+                             "https://juxjooigqgurprxkcocc.supabase.co/*",
+                             "https://economia.awesomeapi.com.br/*",
+                             "https://www.okx.com/*"
                          ],
     "background":  {
                        "service_worker":  "src/service-worker/service-worker.js"
                    },
     "options_page":  "src/ui/options/index.html",
+    "content_scripts":  [
+                            {
+                                "matches":  [
+                                                "https://*.taobao.com/*"
+                                            ],
+                                "js":  [
+                                           "src/content-scripts/modules/taobao_login_notice.js"
+                                       ],
+                                "run_at":  "document_idle"
+                            }
+                        ],
     "web_accessible_resources":  [
                                      {
                                          "resources":  [

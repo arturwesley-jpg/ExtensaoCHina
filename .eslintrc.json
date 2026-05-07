@@ -1,0 +1,33 @@
+{
+  "env": {
+    "browser": true,
+    "es2022": true,
+    "webextensions": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "sourceType": "script"
+  },
+  "plugins": ["security"],
+  "extends": ["eslint:recommended", "plugin:security/recommended-legacy"],
+  "rules": {
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }],
+    "no-console": "off",
+    "no-constant-condition": "warn",
+    "no-empty": ["error", { "allowEmptyCatch": true }],
+    "no-implicit-globals": "off",
+    "strict": "off",
+    "security/detect-object-injection": "warn",
+    "security/detect-non-literal-regexp": "warn",
+    "security/detect-unsafe-regex": "error",
+    "security/detect-buffer-noassert": "error",
+    "security/detect-possible-timing-attacks": "warn",
+    "security/detect-eval-with-expression": "error",
+    "security/detect-no-csrf-before-method-override": "error"
+  },
+  "ignorePatterns": [
+    "node_modules/",
+    "*.min.js",
+    "assets/"
+  ]
+}

@@ -49,6 +49,7 @@
       BRL: 0.77,
       USD: 0.14,
       EUR: 0.13,
+      RUB: 12.5,
     }),
     defaultDisplayMode: DISPLAY_MODE.REPLACE,
     scanDebounceMs: 250,
@@ -123,13 +124,29 @@
       const mode = modeRes?.priceRateMode === "manual" ? "manual" : "auto";
 
       if (mode === "auto") {
-        // Auto mode: prefer remote config rates, fallback to hardcoded
-        const remote = await chrome.storage.local.get("xh_remote_config_v1");
-        const remoteRates = remote?.xh_remote_config_v1?.default_price_rates;
-        if (remoteRates && typeof remoteRates === "object") {
-          cachedPriceRates = normalizePriceRates(remoteRates);
+        // Auto mode: prefer currency service, then remote config, fallback to hardcoded
+        const currencyData = await chrome.storage.local.get("xh_currency_rates_v1");
+        const currencyRates = currencyData?.xh_currency_rates_v1;
+        if (currencyRates && typeof currencyRates === "object") {
+          const mapped = {};
+          if (currencyRates["CNY-BRL"]?.rate) mapped.BRL = currencyRates["CNY-BRL"].rate;
+          if (currencyRates["CNY-USD"]?.rate) mapped.USD = currencyRates["CNY-USD"].rate;
+          if (currencyRates["CNY-EUR"]?.rate) mapped.EUR = currencyRates["CNY-EUR"].rate;
+          if (currencyRates["CNY-RUB"]?.rate) mapped.RUB = currencyRates["CNY-RUB"].rate;
+          if (Object.keys(mapped).length > 0) {
+            cachedPriceRates = normalizePriceRates(mapped);
+          } else {
+            cachedPriceRates = { ...CFG.defaultRates };
+          }
         } else {
-          cachedPriceRates = { ...CFG.defaultRates };
+          // Fallback to remote config
+          const remote = await chrome.storage.local.get("xh_remote_config_v1");
+          const remoteRates = remote?.xh_remote_config_v1?.default_price_rates;
+          if (remoteRates && typeof remoteRates === "object") {
+            cachedPriceRates = normalizePriceRates(remoteRates);
+          } else {
+            cachedPriceRates = { ...CFG.defaultRates };
+          }
         }
       } else {
         // Manual mode: use user-configured rates from sync storage
@@ -324,9 +341,16 @@
     };
 
     chrome.storage.onChanged.addListener(listener);
+    const localListener = (changes, areaName) => {
+      if (areaName !== "local") return;
+      if (!changes["xh_currency_rates_v1"]) return;
+      refreshPriceRates().finally(() => scheduleScan());
+    };
+    chrome.storage.onChanged.addListener(localListener);
     return () => {
       try {
         chrome.storage.onChanged.removeListener(listener);
+        chrome.storage.onChanged.removeListener(localListener);
       } catch {}
     };
   }

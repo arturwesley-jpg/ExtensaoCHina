@@ -24,6 +24,7 @@
     "src/service-worker/content-script-registrar.js",
     "src/service-worker/modules.js",
     "src/service-worker/supabase-client.js",
+    "src/service-worker/currency-service.js",
     "src/service-worker/supabase-vendors.js",
     "src/service-worker/search-queue.js",
     "src/service-worker/update-gate.js",

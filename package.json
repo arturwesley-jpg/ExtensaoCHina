@@ -1,0 +1,15 @@
+{
+  "name": "importkit-chrome-extension",
+  "version": "1.0.5",
+  "private": true,
+  "description": "ImportKit - Ferramentas para Goofish/Xianyu e Taobao",
+  "scripts": {
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "lint:security": "eslint src/ --rule '{\"security/detect-object-injection\": \"error\", \"security/detect-non-literal-regexp\": \"error\", \"security/detect-unsafe-regex\": \"error\", \"security/detect-buffer-noassert\": \"error\", \"security/detect-possible-timing-attacks\": \"error\"}'"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-plugin-security": "^2.1.1"
+  }
+}

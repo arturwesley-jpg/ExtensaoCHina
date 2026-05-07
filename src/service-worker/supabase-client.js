@@ -12,8 +12,8 @@
   const KEY_LOGIN_STATE_LOCAL = XH.authConstants?.KEYS?.LOGIN_STATE_LOCAL || "xh_login_state";
   const KEY_LAST_EMAIL_LOCAL = XH.authConstants?.KEYS?.LAST_EMAIL_LOCAL || "xh_last_email";
 
-  const SUPABASE_URL = "https://juxjooigqgurprxkcocc.supabase.co";
-  const SUPABASE_ANON_KEY = "sb_publishable_AjIkZQ6TFioSgph5KubMjA_8swQviAU";
+  const SUPABASE_URL = "https://kingqexklavbxaqcknxf.supabase.co";
+  const SUPABASE_ANON_KEY = "sb_publishable_c4YEWOt4p09zkWQ6IgSiUg_7EnXjcUs";
   const TOKEN_REFRESH_MARGIN_MS = 60_000;
   const SUGGESTIONS_TABLE = "sugestoes_extensao";
   const ROADMAP_VOTES_TABLE = "roadmap_votes";

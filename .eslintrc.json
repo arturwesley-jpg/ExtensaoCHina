@@ -4,50 +4,27 @@
     "es2022": true,
     "webextensions": true
   },
-  "parserOptions": {
-    "ecmaVersion": 2022,
-    "sourceType": "script"
-  },
   "plugins": ["security"],
-  "extends": ["eslint:recommended", "plugin:security/recommended-legacy"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:security/recommended-legacy"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2022
+  },
   "rules": {
-    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }],
+    "no-unused-vars": ["warn", { "args": "none" }],
     "no-console": "off",
-    "no-constant-condition": "warn",
-    "no-empty": ["error", { "allowEmptyCatch": true }],
-    "no-implicit-globals": "off",
-    "strict": "off",
     "security/detect-object-injection": "warn",
     "security/detect-non-literal-regexp": "warn",
-    "security/detect-unsafe-regex": "warn",
-    "security/detect-buffer-noassert": "error",
-    "security/detect-possible-timing-attacks": "warn",
+    "security/detect-unsafe-regex": "error",
     "security/detect-eval-with-expression": "error",
-    "security/detect-no-csrf-before-method-override": "error"
+    "security/detect-possible-timing-attacks": "warn"
   },
-  "ignorePatterns": [
-    "node_modules/",
-    "*.min.js",
-    "assets/"
-  ],
   "overrides": [
     {
-      "files": ["src/service-worker/**/*.js"],
-      "env": {
-        "serviceworker": true
-      },
-      "globals": {
-        "importScripts": "readonly",
-        "XH": "readonly"
-      }
-    },
-    {
-      "files": ["src/shared/**/*.js", "src/content-scripts/**/*.js"],
-      "globals": {
-        "XH": "readonly",
-        "XHContentUtils": "readonly",
-        "globalThis": "readonly"
-      }
+      "files": ["src/service-worker/*.js"],
+      "env": { "serviceworker": true, "browser": false }
     }
   ]
 }

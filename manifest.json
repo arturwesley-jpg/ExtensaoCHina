@@ -30,7 +30,7 @@
                              "https://*.goofish.com/*",
                              "https://*.taobao.com/*",
                              "https://login.tmall.com/*",
-                             "https://juxjooigqgurprxkcocc.supabase.co/*",
+                             "https://*.supabase.co/*",
                              "https://economia.awesomeapi.com.br/*",
                              "https://www.okx.com/*"
                          ],
@@ -57,7 +57,7 @@
                                                            "src/shared/constants/auth-constants.js"
                                                        ],
                                          "matches":  [
-                                                         "https://juxjooigqgurprxkcocc.supabase.co/*"
+                                                         "https://*.supabase.co/*"
                                                      ]
                                      }
                                  ]

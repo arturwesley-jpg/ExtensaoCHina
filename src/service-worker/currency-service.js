@@ -4,7 +4,7 @@
   "use strict";
 
   const CACHE_KEY = "xh_currency_rates_v1";
-  const CACHE_TTL_MS = 10 * 60 * 1000; // 10 minutes
+
   const ALARM_NAME = "xh-currency-refresh";
 
   const TARGET_CURRENCIES = ["BRL", "USD", "EUR", "RUB"];
@@ -106,7 +106,7 @@
     try {
       const stored = await chrome.storage.local.get(CACHE_KEY);
       existing = stored?.[CACHE_KEY] || {};
-    } catch {}
+    } catch { /* storage read failed, use empty */ }
 
     // 5. Merge: new rates overwrite old, keep old if new fetch failed
     const final = { ...existing };

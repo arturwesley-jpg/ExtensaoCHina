@@ -98,7 +98,7 @@
   async function markDismissed() {
     try {
       await chrome.storage.local.set({ [SEEN_KEY]: true });
-    } catch {}
+    } catch { /* ignored */ }
   }
 
   function buildNotice() {

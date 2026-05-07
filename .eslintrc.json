@@ -37,7 +37,8 @@
         "serviceworker": true
       },
       "globals": {
-        "importScripts": "readonly"
+        "importScripts": "readonly",
+        "XH": "readonly"
       }
     },
     {

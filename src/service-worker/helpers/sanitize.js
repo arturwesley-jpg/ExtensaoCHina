@@ -26,7 +26,7 @@
   }
 
   function sanitizeStoragePath(value) {
-    return asString(value).toLowerCase().replace(/[^a-z0-9/_\.-]/g, "").slice(0, 255);
+    return asString(value).toLowerCase().replace(/[^a-z0-9/_.-]/g, "").slice(0, 255);
   }
 
   function sanitizeUrl(value, options = {}) {

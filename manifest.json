@@ -29,6 +29,7 @@
     "host_permissions":  [
                              "https://*.goofish.com/*",
                              "https://*.taobao.com/*",
+                             "https://login.tmall.com/*",
                              "https://juxjooigqgurprxkcocc.supabase.co/*",
                              "https://economia.awesomeapi.com.br/*",
                              "https://www.okx.com/*"
@@ -37,17 +38,6 @@
                        "service_worker":  "src/service-worker/service-worker.js"
                    },
     "options_page":  "src/ui/options/index.html",
-    "content_scripts":  [
-                            {
-                                "matches":  [
-                                                "https://*.taobao.com/*"
-                                            ],
-                                "js":  [
-                                           "src/content-scripts/modules/taobao_login_notice.js"
-                                       ],
-                                "run_at":  "document_idle"
-                            }
-                        ],
     "web_accessible_resources":  [
                                      {
                                          "resources":  [

@@ -170,6 +170,25 @@
       ]),
       capabilities: {},
     }),
+    defineModule({
+      id: "taobao_login_notice",
+      name: "Aviso login Taobao",
+      description: "Mostra aviso sobre a necessidade de numero de telefone chines ao acessar o login do Taobao.",
+      defaultEnabled: true,
+      free: true,
+      sites: ["taobao"],
+      category: "Navegacao",
+      targets: {
+        matches: ["https://login.taobao.com/*", "https://login.tmall.com/*"],
+        runAt: "document_idle",
+        allFrames: false,
+      },
+      scripts: moduleScripts([
+        "src/content-scripts/modules/taobao_login_notice/core.js",
+        "src/content-scripts/modules/taobao_login_notice/index.js",
+      ]),
+      capabilities: {},
+    }),
   ];
 
   function getWorkerModules() {
